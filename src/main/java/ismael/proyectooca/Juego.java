@@ -61,4 +61,4 @@ public class Juego {
         return cj;
     }
 
-}
+}//Preguntarle a vico sobre la funcion hayJugadoresDespuesPozo
