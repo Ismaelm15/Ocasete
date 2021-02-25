@@ -35,13 +35,15 @@ public class Juego {
                             j.setTurnosSinJugar(0);
                         }
                     }
-
                 }
                 aux.jugarTurno(tablero);
                 Vista.mostrarTablero(juego.getTablero());
                 ganar = aux.ganaPartida();
+                if (aux.ganaPartida()){
+                break;
+                }
+                
             }
-
         } while (!ganar);
         for (Jugador aux : cj.getTodosJugadores()) {
             if (aux.ganaPartida()) {
@@ -50,7 +52,6 @@ public class Juego {
                 break;
             }
         }
-
     }
 
     public Tablero getTablero() {

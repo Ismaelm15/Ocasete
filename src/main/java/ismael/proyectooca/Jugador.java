@@ -63,7 +63,7 @@ public class Jugador {
                 tirarDado();
                 this.mover(tirada);
                 System.out.println("El jugador " + getNombre()
-                        + " y he sacado un " + tirada);
+                        + " ha sacado un " + tirada);
                 copiarDatosCasilla(t);
                 t.getCasilla(casillaActual).ponerJugador(this);
             } while (tiraOtraVez);

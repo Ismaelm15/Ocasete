@@ -107,5 +107,5 @@ public class Tablero {
         }
         return false;
 
-    }
+    }//puedo hacer funcionar el hayJugadoresDESPUESPozo si uso la casilla y el array de jugadores de la casilla
 }
