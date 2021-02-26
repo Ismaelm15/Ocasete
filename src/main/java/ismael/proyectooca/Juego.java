@@ -11,15 +11,16 @@ public class Juego {
         this.tablero = tablero;
         this.cj = controlador;
         // Coloca a los jugadores en la casilla de salida
-        for (Jugador aux : cj.getTodosJugadores()) {
+        cj.getTodosJugadores().forEach(aux -> {
             this.tablero.getCasilla(1).ponerJugador(aux);
-        }
+        });
 
     }
 
     public static void main(String[] args) {
 
         // Se crea el juego
+        int turnos = 0;
         String[] nombres = {"J1", "J2", "J3"};
         ControladorJugadores cj = new ControladorJugadores(nombres);
         Tablero tablero = new Tablero();
@@ -28,6 +29,10 @@ public class Juego {
         // Imprime el estado del tablero inicialmente
         Vista.mostrarTablero(juego.getTablero());
         do {
+            turnos++;
+            System.out.println("---------------\n"
+                    + "Es el turno " + turnos
+                    + "\n---------------");
             for (Jugador aux : cj.getTodosJugadores()) {
                 for (Jugador j : cj.getTodosJugadores()) {
                     if (j.getCasillaActual() == 31) {
@@ -39,10 +44,10 @@ public class Juego {
                 aux.jugarTurno(tablero);
                 Vista.mostrarTablero(juego.getTablero());
                 ganar = aux.ganaPartida();
-                if (aux.ganaPartida()){
-                break;
+                if (aux.ganaPartida()) {
+                    break;
                 }
-                
+
             }
         } while (!ganar);
         for (Jugador aux : cj.getTodosJugadores()) {
