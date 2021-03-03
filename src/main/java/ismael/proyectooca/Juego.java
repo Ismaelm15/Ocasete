@@ -36,7 +36,8 @@ public class Juego {
             for (Jugador aux : cj.getTodosJugadores()) {
                 for (Jugador j : cj.getTodosJugadores()) {
                     if (j.getCasillaActual() == 31) {
-                        if (tablero.hayJugadoresPozo(j, cj.getTodosJugadores())) {
+                        System.out.println("Oh no he caido en el pozo");
+                        if (tablero.hayJugadoresDespuesPozo()){
                             j.setTurnosSinJugar(0);
                         }
                     }

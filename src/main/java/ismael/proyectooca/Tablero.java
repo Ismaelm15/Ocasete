@@ -97,15 +97,23 @@ public class Tablero {
         return tmp;
     }
 
-    public boolean hayJugadoresPozo(Jugador j, ArrayList<Jugador> listaJugadores) {
-        for (Jugador aux : listaJugadores) {
-            if (!aux.equals(j)) {
-                if (aux.getCasillaActual() == j.getCasillaActual()) {
-                    return true;
-                }
+//    public boolean hayJugadoresPozo(Jugador j, ArrayList<Jugador> listaJugadores) {
+//        for (Jugador aux : listaJugadores) {
+//            if (!aux.equals(j)) {
+//                if (aux.getCasillaActual() == j.getCasillaActual()) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+    public boolean hayJugadoresDespuesPozo() {
+        for (int i = 32; i < tablero.length; i++) {
+            if (tablero[i].getJugadoresCasilla() != null) {
+                return true;
             }
         }
         return false;
+    }
 
-    }//puedo hacer funcionar el hayJugadoresDESPUESPozo si uso la casilla y el array de jugadores de la casilla
-}
+}//puedo hacer funcionar el hayJugadoresDESPUESPozo si uso la casilla y el array de jugadores de la casilla
+
