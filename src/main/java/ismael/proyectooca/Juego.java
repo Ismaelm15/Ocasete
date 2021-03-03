@@ -33,7 +33,7 @@ public class Juego {
             System.out.println("---------------\n"
                     + "Es el turno " + turnos
                     + "\n---------------");
-            for (Jugador aux : cj.getTodosJugadores()) {
+            for (Jugador aux : cj.getTodosJugadores()) {//este doble bucle hay que arreglarlo
                 for (Jugador j : cj.getTodosJugadores()) {
                     if (j.getCasillaActual() == 31) {
                         System.out.println("Oh no he caido en el pozo");
