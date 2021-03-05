@@ -107,13 +107,16 @@ public class Tablero {
 //        }
 //        return false;
     public boolean hayJugadoresDespuesPozo() {
+        if(tablero[31].getJugadoresCasilla().size()>1){
+        return true;
+        }
         for (int i = 32; i < tablero.length; i++) {
-            if (tablero[i].getJugadoresCasilla() != null) {
+            if (!tablero[i].getJugadoresCasilla().isEmpty()) {
                 return true;
             }
         }
         return false;
     }
 
-}//puedo hacer funcionar el hayJugadoresDESPUESPozo si uso la casilla y el array de jugadores de la casilla
+}
 

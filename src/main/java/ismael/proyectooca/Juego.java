@@ -33,16 +33,21 @@ public class Juego {
             System.out.println("---------------\n"
                     + "Es el turno " + turnos
                     + "\n---------------");
-            for (Jugador aux : cj.getTodosJugadores()) {//este doble bucle hay que arreglarlo
-                for (Jugador j : cj.getTodosJugadores()) {
-                    if (j.getCasillaActual() == 31) {
-                        System.out.println("Oh no he caido en el pozo");
-                        if (tablero.hayJugadoresDespuesPozo()){
-                            j.setTurnosSinJugar(0);
-                        }
+            for (Jugador aux : cj.getTodosJugadores()) {
+
+                if (aux.getCasillaActual() == 31) {
+                    if (tablero.hayJugadoresDespuesPozo()) {
+                        aux.setTurnosSinJugar(0);
+                        aux.jugarTurno(tablero);
                     }
+
+                    if (aux.getTurnosSinJugar() != 0) {
+                        System.out.println("Oh no sigo en el pozo, soy el jugador "+ aux.getNombre());
+                    }
+                } else {
+                    aux.jugarTurno(tablero);
                 }
-                aux.jugarTurno(tablero);
+
                 Vista.mostrarTablero(juego.getTablero());
                 ganar = aux.ganaPartida();
                 if (aux.ganaPartida()) {

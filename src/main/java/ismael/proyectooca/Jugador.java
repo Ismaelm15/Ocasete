@@ -37,17 +37,10 @@ public class Jugador {
 
     public void copiarDatosCasilla(Tablero t) {
         TipoCasilla copia = t.getCasilla(casillaActual).getTipo();
-        if (copia == TipoCasilla.OCA4 || copia == TipoCasilla.OCA5) {
             this.tiraOtraVez = copia.isTiradaExtra();
             this.turnosSinJugar = copia.getTurnosSinJugar();
             this.mover(copia.getSiguienteMovimiento());
-            System.out.println("De oca a oca y tiro porque me toca, soy el jugador " + getNombre());
-        } else {
-            this.tiraOtraVez = copia.isTiradaExtra();
-            this.turnosSinJugar = copia.getTurnosSinJugar();
-            this.mover(copia.getSiguienteMovimiento());
-        }
-
+      
     }
 
     public void jugarTurno(Tablero t) {
@@ -55,7 +48,7 @@ public class Jugador {
         if (turnosSinJugar > 0) {
             turnosSinJugar--;
             System.out.println("El jugador " + this.getNombre() + " se ha quedado"
-                    + " sin jugar este turno, quedan " + getTurnosSinJugar()
+                    + " sin jugar este turno, quedan " + getTurnosSinJugar()+1
                     + " turnos sin jugar");
         } else {
             do {
@@ -66,6 +59,7 @@ public class Jugador {
                         + " ha sacado un " + tirada);
                 copiarDatosCasilla(t);
                 t.getCasilla(casillaActual).ponerJugador(this);
+                Vista.informarTodo(this, t);
             } while (tiraOtraVez);
         }
     }
