@@ -19,7 +19,8 @@ public class Vista {
             System.out.println("Oh no he caido en el pozo soy el jugador " + j.getNombre());
         }
     }
-
+    
+    //Informa a los jugadores de cada tipo de casilla
     public static void informarOca(Jugador j, Tablero t) {
         TipoCasilla copia = t.getCasilla(j.getCasillaActual()).getTipo();
         if (copia == TipoCasilla.OCA4 || copia == TipoCasilla.OCA5) {
@@ -58,7 +59,7 @@ public class Vista {
         }
     }
 
-    public static void informarTodo(Jugador j, Tablero t) {
+    public static void informarTodo(Jugador j, Tablero t) {//informa de todas las casillas al jugador
         informarPosada(j);
         informarDados(j);
         informarPuente(j, t);

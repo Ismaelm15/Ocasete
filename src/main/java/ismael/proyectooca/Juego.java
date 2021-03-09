@@ -35,21 +35,21 @@ public class Juego {
                     + "\n---------------");
             for (Jugador aux : cj.getTodosJugadores()) {
 
-                if (aux.getCasillaActual() == 31) {
-                    if (tablero.hayJugadoresDespuesPozo()) {
+                if (aux.getCasillaActual() == 31) {//Comprobacion de jugadores en el pozo
+                    if (tablero.hayJugadoresDespuesPozo()) {//Sacar a los jugadores del pozo
                         aux.setTurnosSinJugar(0);
                         aux.jugarTurno(tablero);
                     }
 
-                    if (aux.getTurnosSinJugar() != 0) {
+                    if (aux.getTurnosSinJugar() != 0) {//Entre turnos en el pozo
                         System.out.println("Oh no sigo en el pozo, soy el jugador "+ aux.getNombre());
                     }
                 } else {
-                    aux.jugarTurno(tablero);
+                    aux.jugarTurno(tablero);//Turno normal
                 }
 
-                Vista.mostrarTablero(juego.getTablero());
-                ganar = aux.ganaPartida();
+                Vista.mostrarTablero(juego.getTablero());//Mostrar el tablero despues de cada turno
+                ganar = aux.ganaPartida();//variable para salir del while
                 if (aux.ganaPartida()) {
                     break;
                 }
@@ -57,7 +57,7 @@ public class Juego {
             }
         } while (!ganar);
         for (Jugador aux : cj.getTodosJugadores()) {
-            if (aux.ganaPartida()) {
+            if (aux.ganaPartida()) {//Comprobacion de quien ha ganado la partida
 
                 System.out.println("Ha ganado el jugador " + aux.getNombre());
                 break;
@@ -73,4 +73,4 @@ public class Juego {
         return cj;
     }
 
-}//Preguntarle a vico sobre la funcion hayJugadoresDespuesPozo
+}

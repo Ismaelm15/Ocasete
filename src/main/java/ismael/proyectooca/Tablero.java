@@ -110,7 +110,7 @@ public class Tablero {
         if(tablero[31].getJugadoresCasilla().size()>1){
         return true;
         }
-        for (int i = 32; i < tablero.length; i++) {
+        for (int i = 32; i < tablero.length; i++) {//Comprueba todas las arraylists de jugadores y si no estan vacias
             if (!tablero[i].getJugadoresCasilla().isEmpty()) {
                 return true;
             }

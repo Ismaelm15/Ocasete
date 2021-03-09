@@ -37,29 +37,29 @@ public class Jugador {
 
     public void copiarDatosCasilla(Tablero t) {
         TipoCasilla copia = t.getCasilla(casillaActual).getTipo();
-            this.tiraOtraVez = copia.isTiradaExtra();
-            this.turnosSinJugar = copia.getTurnosSinJugar();
-            this.mover(copia.getSiguienteMovimiento());
-      
+        this.tiraOtraVez = copia.isTiradaExtra();
+        this.turnosSinJugar = copia.getTurnosSinJugar();
+        this.mover(copia.getSiguienteMovimiento());
+
     }
 
     public void jugarTurno(Tablero t) {
 
-        if (turnosSinJugar > 0) {
+        if (turnosSinJugar > 0) {//Cuando se tiene un turno sin jugar no hace nada
             turnosSinJugar--;
             System.out.println("El jugador " + this.getNombre() + " se ha quedado"
-                    + " sin jugar este turno, quedan " + getTurnosSinJugar()+1
+                    + " sin jugar este turno, quedan " + getTurnosSinJugar() + 1
                     + " turnos sin jugar");
         } else {
-            do {
-                t.getCasilla(casillaActual).quitarJugador(this);
-                tirarDado();
-                this.mover(tirada);
+            do {//Ciclo de turno normal
+                t.getCasilla(casillaActual).quitarJugador(this);//quitar el jugador
+                tirarDado();//Tirada
+                this.mover(tirada);//movimiento
                 System.out.println("El jugador " + getNombre()
-                        + " ha sacado un " + tirada);
-                copiarDatosCasilla(t);
-                t.getCasilla(casillaActual).ponerJugador(this);
-                Vista.informarTodo(this, t);
+                        + " ha sacado un " + tirada);//Mostrar cuanto ha sacado
+                copiarDatosCasilla(t);//Copia los datos de la casilla en el jugador
+                t.getCasilla(casillaActual).ponerJugador(this);//colocar al jugador
+                Vista.informarTodo(this, t);//Informacion de la casilla en la que ha caido
             } while (tiraOtraVez);
         }
     }
